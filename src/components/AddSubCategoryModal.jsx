@@ -17,7 +17,9 @@ const AddSubCategoryModal = ({ open, onClose, onSubmit }) => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchMenuData = async () => {
-      const response = await fetch("http://localhost:5000/subcategories");
+      const response = await fetch(
+        "https://indiazona-task.onrender.com/subcategories"
+      );
       const data = await response.json();
       console.log(response);
       setCategories(data);
@@ -40,16 +42,19 @@ const AddSubCategoryModal = ({ open, onClose, onSubmit }) => {
     setIsLoading(true);
     try {
       // POST request to add a new sub-category
-      const response = await fetch("http://localhost:5000/subcategories", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          categoryName: selectedCategory,
-          subCategoryName: subCategoryName,
-        }),
-      });
+      const response = await fetch(
+        "https://indiazona-task.onrender.com/subcategories",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            categoryName: selectedCategory,
+            subCategoryName: subCategoryName,
+          }),
+        }
+      );
 
       if (response.ok) {
         onSubmit();

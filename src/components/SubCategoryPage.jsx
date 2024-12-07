@@ -32,7 +32,7 @@ const SubCategoriesPage = () => {
     if (window.confirm("Are you sure you want to delete this sub-category?")) {
       try {
         const response = await fetch(
-          `http://localhost:5000/subcategories/${id}`,
+          `https://indiazona-task.onrender.com/subcategories/${id}`,
           {
             method: "DELETE",
           }
@@ -52,7 +52,9 @@ const SubCategoriesPage = () => {
     }
   };
   const fetchMenuData = async () => {
-    const response = await fetch("http://localhost:5000/subcategories");
+    const response = await fetch(
+      "https://indiazona-task.onrender.com/subcategories"
+    );
     const data = await response.json();
     setSubCategories(data);
   };
